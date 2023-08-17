@@ -1,0 +1,11 @@
+version: '1.0'
+services:
+  project:
+    build: .
+    volumes:
+      - .:/root/workspace
+    env_file:
+      - .env
+#    ports:
+#      - 8000:8000
+    tty: true # retain container up
