@@ -1,6 +1,9 @@
 ARG python_image_v="python:3.10-buster"
 FROM ${python_image_v}
 
+ENV LANG C.UTF-8
+ENV LANGUAGE en_US
+
 WORKDIR /root/workspace
 
 # Poetryのインストールと設定
