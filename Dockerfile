@@ -13,4 +13,6 @@ RUN curl -sSL https://install.python-poetry.org | python3 - && \
 
 COPY pyproject.toml poetry.lock poetry.toml $WORKDIR/
 
+ENV PYTHONPATH "/root/workspace/src:$PYTHONPATH"
+
 RUN poetry install --no-root
