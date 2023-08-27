@@ -42,7 +42,4 @@ jobs:
       pull-requests: write
     steps:
       - name: Approve pull request
-        uses: marocchino/sticky-pull-request-comment@v2
-        with:
-          message: "This pull request has been approved by ${{ github.actor }}!"
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: hmarr/auto-approve-action@v3
