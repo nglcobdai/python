@@ -28,6 +28,7 @@ jobs:
         run: poetry install --no-root
   lint:
     needs: build
+    runs-on: ubuntu-latest
     steps:
       - name: Lint with flake8
         run: |
