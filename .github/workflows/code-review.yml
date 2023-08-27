@@ -4,8 +4,8 @@
 name: Python application
 
 on:
-  push:
   pull_request:
+    types: [opened, synchronize, reopened, edited, ready_for_review]
 
 permissions:
   contents: read
@@ -26,12 +26,29 @@ jobs:
         run: pip install poetry
       - name: poetry install
         run: poetry install --no-root
+  lint:
+    needs: build
+    steps:
       - name: Lint with flake8
         run: |
           # stop the build if there are Python syntax errors or undefined names
           flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
           # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-      # - name: Test with pytest
-      #   run: |
-      #     pytest tests/*
+  # test:
+  #   needs: build
+  #   steps:
+  #     - name: Test with pytest
+  #       run: |
+  #         pytest tests/*
+  approve:
+    needs: [lint]
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Approve pull request
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          message: "This pull request has been approved by ${{ github.actor }}!"
+          token: ${{ secrets.GITHUB_TOKEN }}
