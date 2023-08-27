@@ -37,11 +37,12 @@ jobs:
   #         pytest tests/*
   approve:
     needs: [code-review]
+    if: |
+      github.event.pull_request.user.login == github.repository_owner
+      && ! github.event.pull_request.draft
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
     steps:
       - name: Approve pull request
         uses: hmarr/auto-approve-action@v3
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
