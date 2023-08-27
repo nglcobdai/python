@@ -43,3 +43,5 @@ jobs:
     steps:
       - name: Approve pull request
         uses: hmarr/auto-approve-action@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
