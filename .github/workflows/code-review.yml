@@ -39,7 +39,8 @@ jobs:
     needs: [code-review]
     runs-on: ubuntu-latest
     steps:
-      - name: Auto approve
-        uses: hmarr/auto-approve-action@v2
+      - name: Labeler
+        uses: andymckay/labeler@master
         with:
-          github-token: "${{ secrets.AUTO_APPROVE }}"
+          add-labels: "auto-merge"
+          token: "${{ secrets.GITHUB_TOKEN }}"
