@@ -37,12 +37,16 @@ jobs:
   #         pytest tests/*
   approve:
     needs: [code-review]
-    if: |
-      github.event.pull_request.user.login == github.repository_owner
-      && ! github.event.pull_request.draft
     runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
+    if: github.event.pull_request.user.login == 'bufferings'
+    env:
+      PR_URL: ${{github.event.pull_request.html_url}}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - name: Approve pull request
-        uses: hmarr/auto-approve-action@v3
+      - name: Checkout repository with preceding commits
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Approve PR
+        if: env.ONLY_README == 'yes'
+        run: gh pr review "$PR_URL" --approve
