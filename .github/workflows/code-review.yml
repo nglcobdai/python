@@ -42,4 +42,4 @@ jobs:
       - name: Auto approve
         uses: hmarr/auto-approve-action@v2
         with:
-          github-token: "${{ secrets.MY_PERSONAL_ACCESS_TOKEN }}"
+          github-token: "${{ secrets.AUTO_APPROVE }}"
