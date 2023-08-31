@@ -23,6 +23,7 @@
         "usernamehw.errorlens",
         "christian-kohler.path-intellisense",
         "VisualStudioExptTeam.vscodeintellicode",
+        "streetsidesoftware.code-spell-checker",
         "oderwat.indent-rainbow",
         "Gruntfuggly.todo-tree",
         "esbenp.prettier-vscode",
