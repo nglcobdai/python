@@ -22,5 +22,13 @@
   },
 
   "jsonc.editor.defaultFormatter": "esbenp.prettier-vscode",
-  "markdown.editor.defaultFormatter": "esbenp.prettier-vscode"
+  "markdown.editor.defaultFormatter": "esbenp.prettier-vscode",
+  "cSpell.customDictionaries": {
+    "custom-dictionary-workspace": {
+      "name": "custom-dictionary-workspace",
+      "path": "${workspaceFolder:python}/.cspell/custom-dictionary-workspace.txt",
+      "addWords": true,
+      "scope": "workspace"
+    }
+  }
 }
