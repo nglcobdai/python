@@ -16,3 +16,5 @@ COPY pyproject.toml poetry.lock poetry.toml $WORKDIR/
 ENV PYTHONPATH "/root/workspace/src:$PYTHONPATH"
 
 RUN poetry install --no-root
+
+RUN python -m ipykernel install --user --name python3.10 --display-name "Python 3.10.12"
