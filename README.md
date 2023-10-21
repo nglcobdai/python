@@ -1,17 +1,25 @@
 # python
 
-## 1. Clone & Prepare .env
+## Getting Started
 
+### 1. Clone & Prepare .env
+
+```sh
+$ git clone git@github.com:nglcobdai/python-template.git
+$ cd python-template
 ```
-git clone XXX
+
+### 2. Create .env
+
+- copy .env.example to .env
+
+```sh
+$ cp .env{.example,}
 ```
 
-.env file should be as follows:
-
-## 2. Docker Build & Run
+### 3. Docker Build & Run
 
 ```sh
 docker-compose build --no-cache
-docker-compose up -d
-docker-compose exec project bash
+docker-compose run --rm project /bin/bash
 ```
