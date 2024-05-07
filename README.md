@@ -20,6 +20,6 @@ $ cp .env{.example,}
 ### 3. Docker Build & Run
 
 ```sh
-docker-compose build --no-cache
-docker-compose run --rm project /bin/bash
+$ docker-compose build --no-cache
+$ docker-compose run --rm project
 ```
