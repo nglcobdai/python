@@ -2,8 +2,9 @@ FROM ubuntu:22.04
 
 ENV LANG=C.UTF-8 \
     LANGUAGE=en_US \
-    PYTHONPATH="/root/workspace:$PYTHONPATH" \
-    DEBIAN_FRONTEND=noninteractive
+    PYTHONPATH="/root/workspace/src:$PYTHONPATH" \
+    DEBIAN_FRONTEND=noninteractive \
+    TZ=Asia/Tokyo
 
 # Pythonのインストール
 RUN apt-get update && apt-get install -y python3.10 python3-pip \
@@ -15,11 +16,11 @@ RUN apt-get update && apt-get install -y \
     libgl1-mesa-glx \
     && rm -rf /var/lib/apt/lists/*
 
+# jupyter notebookの設定
 # pipをアップグレードし、必要なパッケージをインストール
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir notebook==6.4.6 jupyter_contrib_nbextensions jupyter_nbextensions_configurator
 
-# jupyter notebookの設定
 ## Jupyterのnbextensionsをインストールし、nbextensions_configuratorを有効化
 RUN jupyter contrib nbextension install --system && \
     jupyter nbextensions_configurator enable --system
@@ -49,3 +50,7 @@ RUN poetry install --no-root
 
 # Jupyter notebookの設定
 RUN python -m ipykernel install --user --name python3.10 --display-name "Python 3.10"
+
+# Clear cache to free up space
+RUN apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
