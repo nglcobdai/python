@@ -33,7 +33,7 @@ Required libraries are as follows. Refer to the ``pyproject.toml`` file for the 
 ..     .. code-block:: toml
 
 ..         [tool.poetry.dependencies]
-..         python-template = {git = "https://github.com/nglcobdai/python-template.git", tag = "v0.0.1"}
+..         python-template = {git = "https://github.com/nglcobdai/python-template.git", tag = "v0.0.2"}
 
 .. 2. **Install the package**
 
